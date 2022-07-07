@@ -1,7 +1,7 @@
 import React from "react";
-import "boxicons";
 import { Link } from "react-router-dom";
 import logo from "./img/logo.png";
+import { CgShoppingCart } from "react-icons/cg";
 
 function NavBar() {
   const dropDownStyle = {
@@ -9,7 +9,7 @@ function NavBar() {
     left: "auto",
   };
   return (
-    <nav className="navbar " style={{ background: "#383838" }}>
+    <nav className="navbar sticky-top" style={{ background: "#383838" }}>
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img src={logo} width={40} alt="logo" />
@@ -32,6 +32,7 @@ function NavBar() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
+            <CgShoppingCart color="#fff" fontSize="25px" />
             10
           </button>
           <ul
