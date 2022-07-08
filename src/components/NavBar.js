@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "./img/logo.png";
 import { CgShoppingCart } from "react-icons/cg";
+import cartContext from "./context/Context";
+import Dropdown from "./Dropdown";
 
 function NavBar() {
   const dropDownStyle = {
     right: 0,
     left: "auto",
+    maxHeight: "500px",
   };
+  const {
+    state: { cart },
+  } = useContext(cartContext);
   return (
     <nav className="navbar sticky-top" style={{ background: "#383838" }}>
       <div className="container">
@@ -27,41 +33,22 @@ function NavBar() {
         />
         <div className="btn-group">
           <button
-            type="button"
             className="btn btn-success dropdown-toggle"
+            type="button"
+            id="dropdownMenuClickableInside"
             data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
             aria-expanded="false"
           >
             <CgShoppingCart color="#fff" fontSize="25px" />
-            10
+            {cart.length}
           </button>
           <ul
-            className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start "
+            className="dropdown-menu overflow-auto"
+            aria-labelledby="dropdownMenuClickableInside"
             style={dropDownStyle}
           >
-            <li>
-              <Link className="dropdown-item" to="/">
-                Action
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/">
-                Another action
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/">
-                Something else here
-              </Link>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/">
-                Separated link
-              </Link>
-            </li>
+            <Dropdown />
           </ul>
         </div>
       </div>

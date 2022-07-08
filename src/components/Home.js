@@ -6,7 +6,6 @@ function Home() {
   const {
     state: { product },
   } = useContext(cartContext);
-  console.log(product);
 
   return (
     <div className="container-fluid h-100">
