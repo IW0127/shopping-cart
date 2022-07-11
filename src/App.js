@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from "./components/Cart";
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
-import PageNotFound from "./components/NotFound";
+import Cart from "./components/Cart/Cart";
+import Home from "./components/Home/Home";
+import NavBar from "./components/Navebar/NavBar";
+import PageNotFound from "./components/404/NotFound";
 import { Reducer, Context } from "./components/context/Context";
 import "./App.css";
 
 function App() {
-  const { state, dispatch } = Reducer();
+  const { state, dispatch, filterProd, filterDispatch } = Reducer();
   return (
-    <Context value={{ state, dispatch }}>
+    <Context value={{ state, dispatch, filterProd, filterDispatch }}>
       <BrowserRouter>
         <NavBar />
         <Routes>

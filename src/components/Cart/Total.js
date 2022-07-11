@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import cartContext from "./context/Context";
+import cartContext from "../context/Context";
 
 function Total() {
   const {
@@ -23,7 +23,7 @@ function Total() {
     <>
       <div className=" p-4 h-100 " style={sidebarStyle}>
         <h4>Subtotal ({cart.length}) items</h4>
-        <h5>Total : {total}</h5>
+        <h5>Total : ₹{total}.00</h5>
         <div>
           <button type="button" className="btn btn-light w-100 mt-4">
             Clear filter

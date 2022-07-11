@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import logo from "./img/logo.png";
+import logo from "../img/logo.png";
 import { CgShoppingCart } from "react-icons/cg";
-import cartContext from "./context/Context";
+import cartContext from "../context/Context";
 import Dropdown from "./Dropdown";
 
 function NavBar() {
@@ -13,6 +13,7 @@ function NavBar() {
   };
   const {
     state: { cart },
+    filterDispatch,
   } = useContext(cartContext);
   return (
     <nav className="navbar sticky-top" style={{ background: "#383838" }}>
@@ -30,6 +31,12 @@ function NavBar() {
           placeholder="Searching product hear"
           aria-label="Search"
           style={{ width: "500px" }}
+          onChange={(e) =>
+            filterDispatch({
+              type: "FILTER_BY_SEARCH",
+              payload: e.target.value,
+            })
+          }
         />
         <div className="btn-group">
           <button

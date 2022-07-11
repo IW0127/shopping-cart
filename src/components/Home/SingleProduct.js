@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import cartContext from "./context/Context";
+import cartContext from "../context/Context";
 import Rating from "./Rating";
 
 function SingleProduct({ prod }) {

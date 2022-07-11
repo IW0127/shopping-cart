@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import cartContext from "../context/Context";
 import Rating from "./Rating";
 export default function Sidebar() {
+  const {
+    filterProd: { sort, byStock, byFastDelivery, byRating, searchQuery },
+    filterDispatch,
+  } = useContext(cartContext);
+  console.log(byRating);
   const sidebarStyle = {
     color: "#fff",
     background: "rgb(56, 56, 56)",
@@ -14,6 +20,13 @@ export default function Sidebar() {
           type="radio"
           name="flexRadioDefault"
           id="flexRadioDefault1"
+          onChange={() =>
+            filterDispatch({
+              type: "SORT_BY_PRICE",
+              payload: "lowToHigh",
+            })
+          }
+          checked={sort === "lowToHigh" ? true : false}
         />
         <label className="form-check-label" htmlFor="flexRadioDefault1">
           Ascending
@@ -25,6 +38,13 @@ export default function Sidebar() {
           type="radio"
           name="flexRadioDefault"
           id="flexRadioDefault2"
+          onChange={() =>
+            filterDispatch({
+              type: "SORT_BY_PRICE",
+              payload: "highToLow",
+            })
+          }
+          checked={sort === "highToLow" ? true : false}
         />
         <label className="form-check-label" htmlFor="flexRadioDefault2">
           Descending
@@ -36,9 +56,15 @@ export default function Sidebar() {
           type="checkbox"
           value=""
           id="flexCheckDefault"
+          onChange={() =>
+            filterDispatch({
+              type: "FILTER_BY_STOCK",
+            })
+          }
+          checked={byStock}
         />
         <label className="form-check-label" htmlFor="flexCheckDefault">
-          Default checkbox
+          Include Out of stock
         </label>
       </div>
       <div className="form-check p-3">
@@ -47,9 +73,15 @@ export default function Sidebar() {
           type="checkbox"
           value=""
           id="flexCheckChecked"
+          onChange={() =>
+            filterDispatch({
+              type: "FILTER_BY_DELIVERY",
+            })
+          }
+          checked={byFastDelivery}
         />
         <label className="form-check-label" htmlFor="flexCheckChecked">
-          Checked checkbox
+          Fast Delivery Only
         </label>
       </div>
       <div className="d-flex align-items-center my-3">
@@ -57,7 +89,15 @@ export default function Sidebar() {
         <Rating edit={true} />
       </div>
       <div>
-        <button type="button" className="btn btn-light w-100 mt-4">
+        <button
+          type="button"
+          className="btn btn-light w-100 mt-4"
+          onClick={() =>
+            filterDispatch({
+              type: "CLEAR_ALL_FILTER",
+            })
+          }
+        >
           Clear filter
         </button>
       </div>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import cartContext from "./context/Context";
+import cartContext from "../context/Context";
 import { Link } from "react-router-dom";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 function Dropdown() {
