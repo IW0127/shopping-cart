@@ -4,7 +4,6 @@ import cartContext from "../context/Context";
 function Total() {
   const {
     state: { cart },
-    dispatch,
   } = useContext(cartContext);
   const [total, setTotal] = useState(0);
   useEffect(() => {
@@ -25,9 +24,9 @@ function Total() {
         <h4>Subtotal ({cart.length}) items</h4>
         <h5>Total : ₹{total}.00</h5>
         <div>
-          <button type="button" className="btn btn-light w-100 mt-4">
+          {/*   <button type="button" className="btn btn-light w-100 mt-4">
             Clear filter
-          </button>
+          </button> */}
         </div>
       </div>
     </>
